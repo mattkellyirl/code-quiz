@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header h2 {
+    display: inline-block;
+    text-transform: uppercase;
+    font-family: "interstate", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 18px;
+}
+
+.header h2:hover {
+    opacity: 50%;
+    transition: all 0.3s ease 0s;
+}
+
+.hero-container {
+    width: 50%;
+    margin: auto;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a:visited {
+    color: black;
+}
+
+.header {
+    padding: 1% 2%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #eaeaea;
+}
+
+.main-container h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-family: "interstate", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px;
+}
+
+.main-container {
+    margin: 50px 0px 0px 0px;
+}
+
+.hero-container p {
+    text-align: center;
+}
+
+.ins-text {
+    margin: 10px 0px 0px 0px;
+}
