@@ -77,8 +77,8 @@ p {
     width:50%;
 }
 
-button {
-    background-color: #d41b37;
+#start-quiz {
+    background-color: #0275d8;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -89,7 +89,39 @@ button {
     margin: 25px 0px 0px 0px;
   }
 
-button:hover {
-    background-color: #ea1f3d;
+#start-quiz:hover {
+    background-color: #0088ff;
+    transition: all 0.3s ease 0s;
+}
+
+/* JS */
+h2 {
+    text-transform: uppercase;
+    text-align: center;
+    font-family: "interstate", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 26px;
+}
+
+#choices-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.choices-btn {
+    background-color: #0275d8;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.choices-btn:hover {
+    background-color: #0088ff;
     transition: all 0.3s ease 0s;
 }

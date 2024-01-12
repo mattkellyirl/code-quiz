@@ -1,40 +1,38 @@
 // Variable Declarations
-
-var quizQuestions = [
+var questions = [
     {
         title: "Commonly used data types do not include:",
-        choices: ["1. strings", "2. alerts", "3. booleans", "4. numbers"],
-        answer: "2. alerts" 
+        choices: ["Strings", "Alerts", "Booleans", "Numbers"],
+        answer: "Alerts" 
 
     },
     {
         title: "The condition in an if /else statement is enclosed within:",
-        choices: ["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"],
-        answer: "3. parentheses"
+        choices: ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
+        answer: "Parentheses"
         
     },
     {
         title: "Arrays in JavaScript can be used to store:",
-        choices: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above",],
-        answer: "4. all of the above" 
+        choices: ["Numbers and Strings", "Other arrays", "Booleans", "All of the above",],
+        answer: "All of the above" 
 
     },
     {
         title: "String values must be enclosed within _______ when being assigned to variables.",
-        choices: ["1. commas", "2. curly brackets", "3. quotes", "4. parentheses"],
-        answer: "3. quotes" 
+        choices: ["Commas", "Curly brackets", "Quotes", "Parentheses"],
+        answer: "Quotes" 
 
     },
     {
         title: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        choices: [ "1. JavaScript", "2. terminal/bash", "3. for loops", "4. console.log",],
-        answer: "4. console.log" 
+        choices: ["JavaScript", "Terminal/Command Prompt", "For Loops", "console.log",],
+        answer: "Console.log" 
 
     }
 ];
 
 // Function Declarations
-
 function startTimer() {
     var seconds = 60;
 
@@ -50,7 +48,30 @@ function startTimer() {
     }, 1000);
 };
 
+// Ask Question
+var currentIndex = 0;
+var questionContainer = document.getElementById("question-container");
+
+function askQuestions() {
+    var questionTitle = questions[currentIndex].title;
+    questionContainer.textContent = questionTitle;
+    var choices = questions[currentIndex].choices;
+    document.getElementById("choice-1").innerHTML = choices[0];
+    document.getElementById("choice-2").innerHTML = choices[1];
+    document.getElementById("choice-3").innerHTML = choices[2];
+    document.getElementById("choice-4").innerHTML = choices[3];
+};
+
+// Collect User Input
+var choicesContainer = document.getElementById("choices-container");
+choicesContainer.addEventListener("click", function(event) {
+    var userInput = event.target.innerHTML;
+    if(userInput == questions[currentIndex].answer) {
+        currentIndex++;
+        askQuestions();
+    }
+});
+
 // Application 
-
 startTimer();
-
+askQuestions();
