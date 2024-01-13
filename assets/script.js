@@ -1,41 +1,40 @@
 // Variable Declarations
 var questions = [
     {
-        title: "Commonly used data types do not include:",
+        title: "Q1. Commonly used data types do not include:",
         choices: ["Strings", "Alerts", "Booleans", "Numbers"],
         answer: "Alerts" 
 
     },
     {
-        title: "The condition in an if /else statement is enclosed within:",
+        title: "Q2. The condition in an if /else statement is enclosed within:",
         choices: ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
         answer: "Parentheses"
         
     },
     {
-        title: "Arrays in JavaScript can be used to store:",
-        choices: ["Numbers and Strings", "Other arrays", "Booleans", "All of the above",],
+        title: "Q3. Arrays in JavaScript can be used to store:",
+        choices: ["Numbers and Strings", "Other arrays", "Booleans", "All of the above"],
         answer: "All of the above" 
 
     },
     {
-        title: "String values must be enclosed within _______ when being assigned to variables.",
+        title: "Q4. String values must be enclosed within _______ when being assigned to variables.",
         choices: ["Commas", "Curly brackets", "Quotes", "Parentheses"],
         answer: "Quotes" 
 
     },
     {
-        title: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        choices: ["JavaScript", "Terminal/Command Prompt", "For Loops", "console.log",],
-        answer: "Console.log" 
+        title: "Q5. A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices: ["JavaScript", "Terminal/Command Prompt", "For Loops", "The console.log method"],
+        answer: "The console.log method" 
 
     }
 ];
 
-// Function Declarations
+// Start timer on page load
+var seconds = 60;
 function startTimer() {
-    var seconds = 60;
-
     var timerInterval = setInterval(function () {
         document.getElementById('timer').innerHTML = seconds + ' seconds remaining';
 
@@ -48,10 +47,10 @@ function startTimer() {
     }, 1000);
 };
 
-// Ask Question
+// Ask question
 var currentIndex = 0;
+console.log("Current Index is: " + currentIndex);
 var questionContainer = document.getElementById("question-container");
-
 function askQuestions() {
     var questionTitle = questions[currentIndex].title;
     questionContainer.textContent = questionTitle;
@@ -62,16 +61,32 @@ function askQuestions() {
     document.getElementById("choice-4").innerHTML = choices[3];
 };
 
-// Collect User Input
+// Collect user input
 var choicesContainer = document.getElementById("choices-container");
 choicesContainer.addEventListener("click", function(event) {
     var userInput = event.target.innerHTML;
     if(userInput == questions[currentIndex].answer) {
         currentIndex++;
+        console.log(currentIndex);
+        console.log("Correct");
+    } 
+
+    else if(userInput!==questions[currentIndex].answer) {
+         currentIndex++;
+         seconds -= 10;
+         console.log(currentIndex);
+         console.log("Incorrect");
+    }
+
+    // Check for quiz completion and redirect to highscores
+    if(currentIndex >= 5) {
+    window.location.href = 'highscores.html';
+    } else {
+        // Ask the next question only if the quiz is not completed
         askQuestions();
     }
 });
 
-// Application 
+// Call functions for application
 startTimer();
 askQuestions();
