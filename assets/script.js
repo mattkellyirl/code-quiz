@@ -91,8 +91,13 @@ function redirectToHighscores() {
     calculateScore();
     window.location.href = "highscores.html";
 };
+// Calling timer and question functions if id="quiz" from quiz page
+if(document.getElementById("quiz")) {
+    startTimer();
+    askQuestion();
+};
 
-// Retrieve user score from local storage and display
+// If id="highscores" from highscores page then retrieve user score from local storage and display
 if(document.getElementById("highscores")) {
     var userScore = localStorage.getItem('userScore');
 
@@ -100,22 +105,16 @@ if(document.getElementById("highscores")) {
         document.getElementById("result").textContent = userScore + "/5";
     };
 
-    // Add event listener to the submit button
+    // Adding event listener to the submit button and submit initials to console
     document.getElementById("submit-initials").addEventListener("click", function (event) {
         event.preventDefault();
 
-        // Get user initials inside the function
         userInitials = document.getElementById("user-initials").value.toUpperCase();
 
-        // Do something with the user initials, for example, log them to the console
         console.log("User Initials: " + userInitials);
 
-        // Reset the form after submission
         document.getElementById("initials-form").reset();
     });
 };
 
-if(document.getElementById("quiz")) {
-    startTimer();
-    askQuestion();
-};
+// Application written by Matt Kelly 12/01/2024
