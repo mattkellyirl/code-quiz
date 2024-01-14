@@ -34,15 +34,16 @@ var questions = [
 
 // Start timer on page load
 var seconds = 60;
+
 function startTimer() {
     var timerInterval = setInterval(function () {
         document.getElementById('timer').innerHTML = seconds + ' seconds remaining';
+        seconds--;
 
-        if (seconds <= 0) {
+        // Check if the timer has reached 0
+        if (seconds < 0) {
             clearInterval(timerInterval);
-            document.getElementById('timer').innerHTML = 'Time is up!';
-        } else {
-            seconds--;
+            redirectToHighscores();
         }
     }, 1000);
 };
@@ -71,15 +72,19 @@ function choiceButtonClick(btn) {
             console.log("Incorrect");
     }
 
-    // Check if all questions are complete and redirect to highscores
+    // Check if all questions are complete or timer runs out and redirect to highscores
     if(currentIndex == questions.length - 1) {
-        window.location.href = 'highscores.html';
+        redirectToHighscores();
     }
 
     // Ask the next question only if the quiz is not completed
     currentIndex++;
     askQuestion();
 };
+
+function redirectToHighscores() {
+    window.location.href = 'highscores.html';
+}
 
 if(document.getElementById("quiz")) {
     startTimer();
