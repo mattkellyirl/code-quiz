@@ -10,7 +10,7 @@
         <title>Coding Quiz</title>
     </head>
 
-    <body>
+    <body id="quiz">
         <nav>
             <a href="index.html"><h2 class="highscores-return">Return To Main</h2></a>
             <h2 id="timer"></h2>
@@ -20,10 +20,10 @@
         <main class="main-container">
             <h2 id="question-container"></h2>
             <section id="choices-container">
-                <button class="choices-btn" id="choice-1"></button>
-                <button class="choices-btn" id="choice-2"></button>
-                <button class="choices-btn" id="choice-3"></button>
-                <button class="choices-btn" id="choice-4"></button>
+                <button class="choices-btn" id="choice-1" onclick="choiceButtonClick(this)"></button>
+                <button class="choices-btn" id="choice-2" onclick="choiceButtonClick(this)"></button>
+                <button class="choices-btn" id="choice-3" onclick="choiceButtonClick(this)"></button>
+                <button class="choices-btn" id="choice-4" onclick="choiceButtonClick(this)"></button>
             </section>
         </main>
         <script src="assets/script.js"></script>

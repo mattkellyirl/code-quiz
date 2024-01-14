@@ -103,6 +103,10 @@ h2 {
     font-size: 26px;
 }
 
+.result-h2 {
+    color: #5cb85c;
+}
+
 #question-container {
     width: 50%;
 }
