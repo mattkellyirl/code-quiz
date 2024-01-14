@@ -87,6 +87,11 @@ function calculateScore() {
     localStorage.setItem("userScore", totalScore);
 };
 
+function redirectToHighscores() {
+    calculateScore();
+    window.location.href = "highscores.html";
+};
+
 // Retrieve user score from local storage and display
 if(document.getElementById("highscores")) {
     var userScore = localStorage.getItem('userScore');
@@ -94,11 +99,20 @@ if(document.getElementById("highscores")) {
     if(userScore) {
         document.getElementById("result").textContent = userScore + "/5";
     };
-};
 
-function redirectToHighscores() {
-    calculateScore();
-    window.location.href = "highscores.html";
+    // Add event listener to the submit button
+    document.getElementById("submit-initials").addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // Get user initials inside the function
+        userInitials = document.getElementById("user-initials").value.toUpperCase();
+
+        // Do something with the user initials, for example, log them to the console
+        console.log("User Initials: " + userInitials);
+
+        // Reset the form after submission
+        document.getElementById("initials-form").reset();
+    });
 };
 
 if(document.getElementById("quiz")) {

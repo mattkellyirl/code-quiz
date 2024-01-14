@@ -77,7 +77,7 @@ p {
     width:50%;
 }
 
-#start-submit {
+.start-submit {
     background-color: #0275d8;
     color: white;
     padding: 10px 20px;
@@ -89,7 +89,7 @@ p {
     margin: 25px 0px 0px 5px;
   }
 
-#start-submit:hover {
+.start-submit:hover {
     background-color: #0088ff;
     transition: all 0.3s ease 0s;
 }
