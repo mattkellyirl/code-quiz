@@ -103,8 +103,12 @@ h2 {
     font-size: 26px;
 }
 
-.result-h2 {
+#result {
     color: #5cb85c;
+}
+
+.zero-score {
+    color: red;
 }
 
 .prompt-h2 {

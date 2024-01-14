@@ -34,22 +34,21 @@ var questions = [
 
 // Start timer on page load
 var seconds = 60;
+var totalScore = 0;
+var currentIndex = 0;
 
 function startTimer() {
     var timerInterval = setInterval(function () {
         document.getElementById('timer').innerHTML = seconds + ' seconds remaining';
         seconds--;
 
-        // Check if the timer has reached 0
+        // Check if the timer has reached 0, if it has then clear interval and redirect to highscores
         if (seconds < 0) {
             clearInterval(timerInterval);
             redirectToHighscores();
         }
     }, 1000);
 };
-
-var currentIndex = 0;
-console.log("Current Index is: " + currentIndex);
 
 function askQuestion() {
     var questionContainer = document.getElementById("question-container");
@@ -65,11 +64,12 @@ function askQuestion() {
 function choiceButtonClick(btn) {
     var userInput = btn.innerHTML;
     if(userInput == questions[currentIndex].answer) {
+        totalScore++;
         console.log("Correct");
     } 
     else if(userInput !== questions[currentIndex].answer) {
         seconds -= 10;
-            console.log("Incorrect");
+        console.log("Incorrect");
     }
 
     // Check if all questions are complete or timer runs out and redirect to highscores
@@ -79,12 +79,27 @@ function choiceButtonClick(btn) {
 
     // Ask the next question only if the quiz is not completed
     currentIndex++;
+    calculateScore();
     askQuestion();
 };
 
+function calculateScore() {
+    localStorage.setItem("userScore", totalScore);
+};
+
+// Retrieve user score from local storage and display
+if(document.getElementById("highscores")) {
+    var userScore = localStorage.getItem('userScore');
+
+    if(userScore) {
+        document.getElementById("result").textContent = userScore + "/5";
+    };
+};
+
 function redirectToHighscores() {
-    window.location.href = 'highscores.html';
-}
+    calculateScore();
+    window.location.href = "highscores.html";
+};
 
 if(document.getElementById("quiz")) {
     startTimer();
