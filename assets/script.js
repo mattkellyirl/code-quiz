@@ -111,7 +111,16 @@ if(document.getElementById("highscores")) {
 
         userInitials = document.getElementById("user-initials").value.toUpperCase();
 
-        console.log("User Initials: " + userInitials);
+        var leaderboard = document.querySelector(".leaderboard ol");
+        var listItem = document.createElement("li");   
+        var scoreSpan = document.createElement("span");
+
+        scoreSpan.textContent = userScore + "/5";
+        scoreSpan.style.color = "#5cb85c";
+
+        listItem.textContent = userInitials + " ";
+        listItem.appendChild(scoreSpan);
+        leaderboard.appendChild(listItem);
 
         document.getElementById("initials-form").reset();
     });
